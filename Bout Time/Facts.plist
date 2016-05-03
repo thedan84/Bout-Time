@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Hewlett-Packard is founded</key>
+	<integer>1939</integer>
+	<key>The Complex Number Calculator (CNC) is completed</key>
+	<real>1940</real>
+	<key>First Computer Program to run on a Computer</key>
+	<integer>1948</integer>
+	<key>Direct keyboard input to computers</key>
+	<integer>1956</integer>
+	<key>Intel introduces the first microprocessor</key>
+	<integer>1971</integer>
+	<key>Laser printer invented at Xerox PARC</key>
+	<integer>1971</integer>
+	<key>Cray-1 supercomputer introduced</key>
+	<integer>1975</integer>
+	<key>Steve Wozniak completes the Apple I</key>
+	<integer>1976</integer>
+	<key>Apple II introduced</key>
+	<integer>1977</integer>
+	<key>&quot;The Computer Programme&quot; debuts on the BBC</key>
+	<integer>1982</integer>
+	<key>Commodore introduces the Commodore 64</key>
+	<integer>1982</integer>
+	<key>IBM introduces its Personal Computer (PC)</key>
+	<integer>1981</integer>
+	<key>Apple introduces the Lisa Computer</key>
+	<integer>1983</integer>
+	<key>Apple launches the Macintosh</key>
+	<integer>1984</integer>
+	<key>PC&apos;s Limited is founded</key>
+	<integer>1984</integer>
+	<key>Steve Jobs unveils the NeXT Cube</key>
+	<integer>1988</integer>
+	<key>Macintosh Portable is introduced</key>
+	<integer>1989</integer>
+	<key>PowerBook series of laptops is introduced</key>
+	<integer>1991</integer>
+	<key>Apple ships the first Newton</key>
+	<integer>1993</integer>
+	<key>Intel&apos;s Pentium microprocessor is released</key>
+	<integer>1993</integer>
+	<key>Sony Vaio series is begun</key>
+	<integer>1996</integer>
+	<key>The iMac is launched</key>
+	<integer>1998</integer>
+	<key>First camera phone introduced</key>
+	<integer>2000</integer>
+	<key>PowerMac G5 is released</key>
+	<integer>2003</integer>
+	<key>Arduino releases its first micro PC</key>
+	<integer>2005</integer>
+	<key>Amazon Kindle is released</key>
+	<integer>2007</integer>
+	<key>Apple releases its first iPhone</key>
+	<integer>2007</integer>
+	<key>MacBook Air is released</key>
+	<integer>2008</integer>
+	<key>Apple iPad is released</key>
+	<integer>2010</integer>
+	<key>Nest Learning Thermostat is introduced</key>
+	<integer>2011</integer>
+	<key>Raspberry Pi is released</key>
+	<integer>2012</integer>
+	<key>Apple Watch is released</key>
+	<integer>2015</integer>
+	<key>microsoft.com goes online</key>
+	<integer>1991</integer>
+	<key>3.5-inch floppy drive introduced</key>
+	<integer>1981</integer>
+	<key>Konrad Zuse finishes the Z3 computer</key>
+	<integer>1941</integer>
+	<key>Harvard Mark 1 is completed</key>
+	<integer>1944</integer>
+	<key>Hewlett-Packard introduces the HP-35</key>
+	<integer>1971</integer>
+	<key>MITS Altair 8800 kit appears in &quot;Popular Electronics&quot;</key>
+	<integer>1975</integer>
+	<key>Atari introduces its Model 400 and 800 computers</key>
+	<integer>1979</integer>
+	<key>Sun Microsystems is founded</key>
+	<integer>1982</integer>
+</dict>
+</plist>
