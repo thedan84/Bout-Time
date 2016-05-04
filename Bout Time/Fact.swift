@@ -22,7 +22,7 @@ struct Fact: PlistConverterType {
     
     init() {}
     
-    mutating func getRandomFact() -> Fact {
+    private func getRandomFact() -> Fact {
         var factDict = [String: AnyObject]()
         
         if let allFacts = convertPlistToArray("Facts") {
@@ -32,4 +32,28 @@ struct Fact: PlistConverterType {
         
         return Fact(dictionary: factDict)
     }
+    
+    func getRandomFacts() -> [Fact] {
+        var facts = [Fact]()
+        
+        while facts.count != 4 {
+            let randomFact = self.getRandomFact()
+            
+            while !facts.contains(randomFact) {
+                facts.append(randomFact)
+            }
+        }
+        
+        return facts
+    }
+    
+    func getURLForFact(fact: Fact) -> String {
+        return fact.url!
+    }
+}
+
+extension Fact: Equatable {}
+
+func ==(lhs: Fact, rhs: Fact) -> Bool {
+    return lhs.fact == rhs.fact && lhs.year == rhs.year && lhs.url == rhs.url
 }
