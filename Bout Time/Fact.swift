@@ -7,9 +7,8 @@
 //
 
 import Foundation
-import GameKit
 
-struct Fact: PlistConverterType {
+struct Fact {
     var fact: String?
     var year: Int?
     var url: String?
@@ -21,35 +20,6 @@ struct Fact: PlistConverterType {
     }
     
     init() {}
-    
-    private func getRandomFact() -> Fact {
-        var factDict = [String: AnyObject]()
-        
-        if let allFacts = convertPlistToArray("Facts") {
-            let randomInt = GKRandomSource.sharedRandom().nextIntWithUpperBound(allFacts.count)
-            factDict = allFacts[randomInt]
-        }
-        
-        return Fact(dictionary: factDict)
-    }
-    
-    func getRandomFacts() -> [Fact] {
-        var facts = [Fact]()
-        
-        while facts.count != 4 {
-            let randomFact = self.getRandomFact()
-            
-            while !facts.contains(randomFact) {
-                facts.append(randomFact)
-            }
-        }
-        
-        return facts
-    }
-    
-    func getURLForFact(fact: Fact) -> String {
-        return fact.url!
-    }
 }
 
 extension Fact: Equatable {}
