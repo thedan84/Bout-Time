@@ -8,6 +8,7 @@
 
 import UIKit
 import AudioToolbox
+import SafariServices
 
 enum NextRoundImage: String {
     case Success = "next_round_success.png"
@@ -18,7 +19,7 @@ enum NextRoundImage: String {
     }
 }
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, SFSafariViewControllerDelegate {
     
     //MARK: - IBOutlets
     @IBOutlet weak var view1: UIView!
@@ -35,9 +36,15 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var nextRoundButton: UIButton!
     
+    @IBOutlet weak var roundLabel: UILabel!
+    
     //MARK: - Properties
     var factManager = FactManager()
-    var round = 1
+    var round: Int = 1 {
+        didSet {
+            self.roundLabel.text = "\(round)"
+        }
+    }
     var points = 0
     var sound = Sound()
     var timer = NSTimer()
@@ -54,6 +61,7 @@ class ViewController: UIViewController {
         
         setupViews()
         startNewGame()
+        roundLabel.text = "\(round)"
     }
     
     //MARK: - IBActions
@@ -117,6 +125,7 @@ class ViewController: UIViewController {
         round = 1
         points = 0
         startTimer()
+        disableLabels()
     }
     
     func startNewRound() {
@@ -128,6 +137,7 @@ class ViewController: UIViewController {
         timerLabel.text = "1:00"
         round += 1
         startTimer()
+        disableLabels()
     }
     
     func reloadData() {
@@ -174,6 +184,36 @@ class ViewController: UIViewController {
         }
         
         stopTimer()
+        
+        let labels = [factLabel1, factLabel2, factLabel3, factLabel4]
+        
+        for label in labels {
+            let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.factTapped(_:)))
+            label.addGestureRecognizer(gestureRecognizer)
+            label.userInteractionEnabled = true
+        }
+        
+    }
+    
+    func factTapped(sender: UITapGestureRecognizer) {
+        let fact = factManager.facts[sender.view!.tag - 1]
+        if let urlString = fact.url, let url = NSURL(string: urlString) {
+            let safariVC = SFSafariViewController(URL: url, entersReaderIfAvailable: true)
+            safariVC.delegate = self
+            presentViewController(safariVC, animated: true, completion: nil)
+        }
+    }
+    
+    func safariViewControllerDidFinish(controller: SFSafariViewController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func disableLabels() {
+        let labels = [factLabel1, factLabel2, factLabel3, factLabel4]
+        
+        for label in labels {
+            label.userInteractionEnabled = false
+        }
     }
     
     override func canBecomeFirstResponder() -> Bool {
