@@ -40,6 +40,8 @@ class ViewController: UIViewController {
     var round = 1
     var points = 0
     var sound = Sound()
+    var timer = NSTimer()
+    var seconds = 60
     
     //MARK: - View lifecycle
     override func viewDidAppear(animated: Bool) {
@@ -74,36 +76,25 @@ class ViewController: UIViewController {
     }
     
     @IBAction func nextRoundButtonTapped(sender: UIButton) {
-        nextRoundButton.hidden = true
-        startNewRound()
-    }
-    
-    //MARK: - UIEvent
-    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
         if round != 6 {
-            switch motion {
-            case .MotionShake:
-                let result = self.factManager.checkRightOrderOfFacts(self.factManager.facts)
-                
-                switch result {
-                case true:
-                    sound.playRightAnswerSound()
-                    nextRoundButton.setImage(NextRoundImage.Success.imageName(), forState: .Normal)
-                    nextRoundButton.hidden = false
-                    points += 1
-                case false:
-                    sound.playWrongAnswerSound()
-                    nextRoundButton.setImage(NextRoundImage.Failure.imageName(), forState: .Normal)
-                    nextRoundButton.hidden = false
-                }
-            default: break
-            }
+            nextRoundButton.hidden = true
+            startNewRound()
         } else {
             let resultVC = storyboard?.instantiateViewControllerWithIdentifier("ResultVC") as! ResultViewController
             resultVC.score = points
             presentViewController(resultVC, animated: true) {
                 self.startNewGame()
+                self.nextRoundButton.hidden = true
             }
+        }
+    }
+    
+    //MARK: - UIEvent
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
+        switch motion {
+        case .MotionShake:
+            validateAnswer()
+        default: break
         }
     }
     
@@ -125,6 +116,7 @@ class ViewController: UIViewController {
         timerLabel.text = "1:00"
         round = 1
         points = 0
+        startTimer()
     }
     
     func startNewRound() {
@@ -135,6 +127,7 @@ class ViewController: UIViewController {
         
         timerLabel.text = "1:00"
         round += 1
+        startTimer()
     }
     
     func reloadData() {
@@ -146,6 +139,41 @@ class ViewController: UIViewController {
                 label.text = text
             }
         }
+    }
+    
+    func startTimer() {
+        self.seconds = 60
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(ViewController.timerFire(_:)), userInfo: nil, repeats: true)
+    }
+    
+    func stopTimer() {
+        self.timer.invalidate()
+    }
+    
+    func timerFire(timer: NSTimer) {
+        self.seconds -= 1
+        timerLabel.text = "\(seconds)"
+        if seconds == 0 {
+            validateAnswer()
+        }
+    }
+    
+    func validateAnswer() {
+        let result = self.factManager.checkRightOrderOfFacts(self.factManager.facts)
+        
+        switch result {
+        case true:
+            sound.playRightAnswerSound()
+            nextRoundButton.setImage(NextRoundImage.Success.imageName(), forState: .Normal)
+            nextRoundButton.hidden = false
+            points += 1
+        case false:
+            sound.playWrongAnswerSound()
+            nextRoundButton.setImage(NextRoundImage.Failure.imageName(), forState: .Normal)
+            nextRoundButton.hidden = false
+        }
+        
+        stopTimer()
     }
     
     override func canBecomeFirstResponder() -> Bool {
