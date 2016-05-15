@@ -10,10 +10,13 @@ import UIKit
 
 class ResultViewController: UIViewController {
     
+    // MARK: - Outlets
     @IBOutlet weak var resultLabel: UILabel!
     
+    // MARK: - Properties
     var score = Int()
     
+    // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +24,8 @@ class ResultViewController: UIViewController {
         resultLabel.text = "\(result) %"
     }
     
+    // MARK: - Action methods
+    // Function to play another round
     @IBAction func playAgainButtonTapped(sender: UIButton) {
         dismissViewControllerAnimated(true, completion: nil)
     }

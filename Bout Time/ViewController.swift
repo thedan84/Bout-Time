@@ -10,6 +10,7 @@ import UIKit
 import AudioToolbox
 import SafariServices
 
+// Enum to provide the right image to the 'nextRoundButton'
 enum NextRoundImage: String {
     case Success = "next_round_success.png"
     case Failure = "next_round_fail.png"
@@ -65,6 +66,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
     }
     
     //MARK: - IBActions
+    // Moves the selected fact one position down
     @IBAction func downButtonTapped(sender: UIButton) {
         let oldIndex = sender.tag - 1
         let newIndex = sender.tag
@@ -74,6 +76,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
         reloadData()
     }
     
+    // Moves the selected fact one position up
     @IBAction func upButtonTapped(sender: UIButton) {
         let oldIndex = sender.tag - 1
         let newIndex = sender.tag - 2
@@ -83,6 +86,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
         reloadData()
     }
     
+    // Starts a new play round
     @IBAction func nextRoundButtonTapped(sender: UIButton) {
         if round != 6 {
             nextRoundButton.hidden = true
@@ -98,6 +102,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
     }
     
     //MARK: - UIEvent
+    // Shake gesture to validate the answer
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
         switch motion {
         case .MotionShake:
@@ -107,6 +112,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
     }
     
     //MARK: - Helper methods
+    // Adds a corner radius to the fact views
     func setupViews() {
         let views = [view1, view2, view3, view4]
         
@@ -115,6 +121,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
         }
     }
     
+    // Starts a new game
     func startNewGame() {
         factManager.facts = []
         self.factManager.getRandomFacts()
@@ -128,6 +135,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
         disableLabels()
     }
     
+    // Starts a new round
     func startNewRound() {
         factManager.facts = []
         self.factManager.getRandomFacts()
@@ -140,6 +148,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
         disableLabels()
     }
     
+    // Reloads the labels after a fact has been moved
     func reloadData() {
         let labels = [factLabel1, factLabel2, factLabel3, factLabel4]
         
@@ -151,15 +160,18 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
         }
     }
     
+    // Starts the timer
     func startTimer() {
         self.seconds = 60
         self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(ViewController.timerFire(_:)), userInfo: nil, repeats: true)
     }
     
+    // Stops the timer
     func stopTimer() {
         self.timer.invalidate()
     }
     
+    // Helper method for the round timer
     func timerFire(timer: NSTimer) {
         self.seconds -= 1
         timerLabel.text = "\(seconds)"
@@ -168,6 +180,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
         }
     }
     
+    // Validates the answer with the help of the helper method declared in 'FactManager'
     func validateAnswer() {
         let result = self.factManager.checkRightOrderOfFacts(self.factManager.facts)
         
@@ -195,6 +208,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
         
     }
     
+    // Opens the Safari View Controller after the user tapped on a facg
     func factTapped(sender: UITapGestureRecognizer) {
         let fact = factManager.facts[sender.view!.tag - 1]
         if let urlString = fact.url, let url = NSURL(string: urlString) {
@@ -204,10 +218,12 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
         }
     }
     
+    // MARK: - SafariViewControllerDelegate
     func safariViewControllerDidFinish(controller: SFSafariViewController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+    // Disables the labels while the round is being played
     func disableLabels() {
         let labels = [factLabel1, factLabel2, factLabel3, factLabel4]
         
@@ -216,6 +232,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
         }
     }
     
+    // Helper method for the shake gesture
     override func canBecomeFirstResponder() -> Bool {
         return true
     }

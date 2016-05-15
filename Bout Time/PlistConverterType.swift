@@ -8,10 +8,12 @@
 
 import Foundation
 
+// Protocol to which the type has to conform to get Facts out of the Facts.plist
 protocol PlistConverterType {
     func convertPlistToArray(plist: String) -> [[String: AnyObject]]?
 }
 
+// Extension which converts the plist to the desired Facts array
 extension PlistConverterType {
     func convertPlistToArray(plist: String) -> [[String: AnyObject]]? {
         
