@@ -23,7 +23,7 @@ struct Fact {
     init() {}
 }
 
-/* Extend the Fact model to conform to the 'Equatable' protocol and implement the necessary function so that different instances can be compare */
+// Extend the Fact model to conform to the 'Equatable' protocol and implement the necessary function so that different instances can be compare
 
 extension Fact: Equatable {}
 

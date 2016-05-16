@@ -41,11 +41,14 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
     
     //MARK: - Properties
     var factManager = FactManager()
+    
+    // Property with setter to update the roundLabel's text
     var round: Int = 1 {
         didSet {
             self.roundLabel.text = "\(round)"
         }
     }
+    
     var points = 0
     var sound = Sound()
     var timer = NSTimer()
