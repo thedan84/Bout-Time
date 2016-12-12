@@ -9,10 +9,12 @@
 import Foundation
 import GameKit
 
+// Struct for managing 'Fact' instances, conforms to 'PlistConverterType
 struct FactManager: PlistConverterType {
     
     var facts = [Fact]()
     
+    // Function to create one random Fact instance, marked private because only this struct needs the func
     fileprivate func getRandomFact() -> Fact {
         var factDict = [String: AnyObject]()
         
@@ -24,8 +26,10 @@ struct FactManager: PlistConverterType {
         return Fact(dictionary: factDict)
     }
     
+    // Function to create the 4 random facts.
     mutating func getRandomFacts() {
         
+        // Checks if no random fact is added twice to the facts array
         while facts.count != 4 {
             let randomFact = self.getRandomFact()
             
@@ -34,11 +38,12 @@ struct FactManager: PlistConverterType {
             }
         }
     }
-    
+
     func getURLForFact(_ fact: Fact) -> String {
         return fact.url!
     }
     
+    // Function to compare the right order of facts to the order the user put in.
     func checkRightOrderOfFacts(_ facts: [Fact]) -> Bool {
         var result = false
         
@@ -52,7 +57,8 @@ struct FactManager: PlistConverterType {
         
         return result
     }
-    
+
+// Function to swap to facts
     mutating func swapTwoFacts(_ fact1: Int, _ fact2: Int) {
         swap(&facts[fact1], &facts[fact2])
     }
