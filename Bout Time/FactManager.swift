@@ -13,11 +13,11 @@ struct FactManager: PlistConverterType {
     
     var facts = [Fact]()
     
-    private func getRandomFact() -> Fact {
+    fileprivate func getRandomFact() -> Fact {
         var factDict = [String: AnyObject]()
         
         if let allFacts = convertPlistToArray("Facts") {
-            let randomInt = GKRandomSource.sharedRandom().nextIntWithUpperBound(allFacts.count)
+            let randomInt = GKRandomSource.sharedRandom().nextInt(upperBound: allFacts.count)
             factDict = allFacts[randomInt]
         }
         
@@ -35,14 +35,14 @@ struct FactManager: PlistConverterType {
         }
     }
     
-    func getURLForFact(fact: Fact) -> String {
+    func getURLForFact(_ fact: Fact) -> String {
         return fact.url!
     }
     
-    func checkRightOrderOfFacts(facts: [Fact]) -> Bool {
+    func checkRightOrderOfFacts(_ facts: [Fact]) -> Bool {
         var result = false
         
-        let sortedFacts = self.facts.sort { $0.year < $1.year }
+        let sortedFacts = self.facts.sorted { $0.year! < $1.year! }
         
         if facts == sortedFacts {
             result = true
@@ -53,7 +53,7 @@ struct FactManager: PlistConverterType {
         return result
     }
     
-    mutating func swapTwoFacts(fact1: Int, _ fact2: Int) {
+    mutating func swapTwoFacts(_ fact1: Int, _ fact2: Int) {
         swap(&facts[fact1], &facts[fact2])
     }
 }

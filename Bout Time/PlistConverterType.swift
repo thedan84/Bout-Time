@@ -9,13 +9,13 @@
 import Foundation
 
 protocol PlistConverterType {
-    func convertPlistToArray(plist: String) -> [[String: AnyObject]]?
+    func convertPlistToArray(_ plist: String) -> [[String: AnyObject]]?
 }
 
 extension PlistConverterType {
-    func convertPlistToArray(plist: String) -> [[String: AnyObject]]? {
+    func convertPlistToArray(_ plist: String) -> [[String: AnyObject]]? {
         
-        guard let path = NSBundle.mainBundle().pathForResource(plist, ofType: "plist"), let array = NSArray(contentsOfFile: path) as? [[String: AnyObject]] else { return nil }
+        guard let path = Bundle.main.path(forResource: plist, ofType: "plist"), let array = NSArray(contentsOfFile: path) as? [[String: AnyObject]] else { return nil }
                 
         return array
     }

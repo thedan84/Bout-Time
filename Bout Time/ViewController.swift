@@ -47,11 +47,11 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
     }
     var points = 0
     var sound = Sound()
-    var timer = NSTimer()
+    var timer = Timer()
     var seconds = 60
     
     //MARK: - View lifecycle
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.becomeFirstResponder()
     }
@@ -65,7 +65,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
     }
     
     //MARK: - IBActions
-    @IBAction func downButtonTapped(sender: UIButton) {
+    @IBAction func downButtonTapped(_ sender: UIButton) {
         let oldIndex = sender.tag - 1
         let newIndex = sender.tag
         
@@ -74,7 +74,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
         reloadData()
     }
     
-    @IBAction func upButtonTapped(sender: UIButton) {
+    @IBAction func upButtonTapped(_ sender: UIButton) {
         let oldIndex = sender.tag - 1
         let newIndex = sender.tag - 2
         
@@ -83,24 +83,24 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
         reloadData()
     }
     
-    @IBAction func nextRoundButtonTapped(sender: UIButton) {
+    @IBAction func nextRoundButtonTapped(_ sender: UIButton) {
         if round != 6 {
-            nextRoundButton.hidden = true
+            nextRoundButton.isHidden = true
             startNewRound()
         } else {
-            let resultVC = storyboard?.instantiateViewControllerWithIdentifier("ResultVC") as! ResultViewController
+            let resultVC = storyboard?.instantiateViewController(withIdentifier: "ResultVC") as! ResultViewController
             resultVC.score = points
-            presentViewController(resultVC, animated: true) {
+            present(resultVC, animated: true) {
                 self.startNewGame()
-                self.nextRoundButton.hidden = true
+                self.nextRoundButton.isHidden = true
             }
         }
     }
     
     //MARK: - UIEvent
-    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         switch motion {
-        case .MotionShake:
+        case .motionShake:
             validateAnswer()
         default: break
         }
@@ -111,7 +111,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
         let views = [view1, view2, view3, view4]
         
         for view in views {
-            view.layer.cornerRadius = view.bounds.width / 50
+            view?.layer.cornerRadius = (view?.bounds.width)! / 50
         }
     }
     
@@ -146,21 +146,21 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
         for index in 0..<factManager.facts.count {
             let label = labels[index]
             if let text = factManager.facts[index].fact {
-                label.text = text
+                label?.text = text
             }
         }
     }
     
     func startTimer() {
         self.seconds = 60
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(ViewController.timerFire(_:)), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(ViewController.timerFire(_:)), userInfo: nil, repeats: true)
     }
     
     func stopTimer() {
         self.timer.invalidate()
     }
     
-    func timerFire(timer: NSTimer) {
+    func timerFire(_ timer: Timer) {
         self.seconds -= 1
         timerLabel.text = "\(seconds)"
         if seconds == 0 {
@@ -174,13 +174,13 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
         switch result {
         case true:
             sound.playRightAnswerSound()
-            nextRoundButton.setImage(NextRoundImage.Success.imageName(), forState: .Normal)
-            nextRoundButton.hidden = false
+            nextRoundButton.setImage(NextRoundImage.Success.imageName(), for: UIControlState())
+            nextRoundButton.isHidden = false
             points += 1
         case false:
             sound.playWrongAnswerSound()
-            nextRoundButton.setImage(NextRoundImage.Failure.imageName(), forState: .Normal)
-            nextRoundButton.hidden = false
+            nextRoundButton.setImage(NextRoundImage.Failure.imageName(), for: UIControlState())
+            nextRoundButton.isHidden = false
         }
         
         stopTimer()
@@ -189,34 +189,34 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
         
         for label in labels {
             let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.factTapped(_:)))
-            label.addGestureRecognizer(gestureRecognizer)
-            label.userInteractionEnabled = true
+            label?.addGestureRecognizer(gestureRecognizer)
+            label?.isUserInteractionEnabled = true
         }
         
     }
     
-    func factTapped(sender: UITapGestureRecognizer) {
+    func factTapped(_ sender: UITapGestureRecognizer) {
         let fact = factManager.facts[sender.view!.tag - 1]
-        if let urlString = fact.url, let url = NSURL(string: urlString) {
-            let safariVC = SFSafariViewController(URL: url, entersReaderIfAvailable: true)
+        if let urlString = fact.url, let url = URL(string: urlString) {
+            let safariVC = SFSafariViewController(url: url, entersReaderIfAvailable: true)
             safariVC.delegate = self
-            presentViewController(safariVC, animated: true, completion: nil)
+            present(safariVC, animated: true, completion: nil)
         }
     }
     
-    func safariViewControllerDidFinish(controller: SFSafariViewController) {
-        dismissViewControllerAnimated(true, completion: nil)
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        dismiss(animated: true, completion: nil)
     }
     
     func disableLabels() {
         let labels = [factLabel1, factLabel2, factLabel3, factLabel4]
         
         for label in labels {
-            label.userInteractionEnabled = false
+            label?.isUserInteractionEnabled = false
         }
     }
     
-    override func canBecomeFirstResponder() -> Bool {
+    override var canBecomeFirstResponder : Bool {
         return true
     }
 }

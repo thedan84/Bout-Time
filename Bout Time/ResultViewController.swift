@@ -21,7 +21,7 @@ class ResultViewController: UIViewController {
         resultLabel.text = "\(result) %"
     }
     
-    @IBAction func playAgainButtonTapped(sender: UIButton) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func playAgainButtonTapped(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
 }
