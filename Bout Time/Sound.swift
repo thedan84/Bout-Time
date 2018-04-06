@@ -10,35 +10,31 @@ import Foundation
 import AudioToolbox
 
 struct Sound {
+
+    //MARK: - System Sounds
+    private static let rightAnswerSound: SystemSoundID = {
+        let pathToSoundFile = Bundle.main.url(forResource: "CorrectDing", withExtension: "wav")!
+        var soundID: SystemSoundID = 0
+        AudioServicesCreateSystemSoundID(pathToSoundFile as CFURL, &soundID)
+        return soundID
+    }()
     
-    //MARK: - Properties
-    var rightAnswerSound: SystemSoundID = 0
-    var wrongAnswerSound: SystemSoundID = 1
+    private static let wrongAnswerSound: SystemSoundID = {
+        let pathToSoundFile = Bundle.main.url(forResource: "IncorrectBuzz", withExtension: "wav")!
+        var soundID: SystemSoundID = 0
+        AudioServicesCreateSystemSoundID(pathToSoundFile as CFURL, &soundID)
+        return soundID
+    }()
     
-    //Properties which get the right sound based on path
-    var rightSound: URL {
-        let pathToSoundFile = Bundle.main.path(forResource: "CorrectDing", ofType: "wav")
-        return URL(fileURLWithPath: pathToSoundFile!)
-    }
+    //MARK: - Private Initializer
+    private init() {}
     
-    var wrongSound: URL {
-        let pathToSoundFile = Bundle.main.path(forResource: "IncorrectBuzz", ofType: "wav")
-        return URL(fileURLWithPath: pathToSoundFile!)
-    }
-    
-    //Helper function to load the right sound from the bundle url
-    mutating func loadSoundWithURL(_ url: URL, id: inout SystemSoundID) {
-        AudioServicesCreateSystemSoundID(url as CFURL, &id)
-    }
-    
-    //MARK: - Play the right sound
-    mutating func playRightAnswerSound() {
-        loadSoundWithURL(rightSound, id: &rightAnswerSound)
+    //MARK: - Play sound functions
+    static func playRightAnswerSound() {
         AudioServicesPlaySystemSound(rightAnswerSound)
     }
     
-    mutating func playWrongAnswerSound() {
-        loadSoundWithURL(wrongSound, id: &wrongAnswerSound)
+    static func playWrongAnswerSound() {
         AudioServicesPlaySystemSound(wrongAnswerSound)
     }
-}
+

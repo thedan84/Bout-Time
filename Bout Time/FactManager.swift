@@ -58,8 +58,8 @@ struct FactManager: PlistConverterType {
         return result
     }
 
-// Function to swap to facts
+    // Function to swap to facts
     mutating func swapTwoFacts(_ fact1: Int, _ fact2: Int) {
-        swap(&facts[fact1], &facts[fact2])
+        facts.swapAt(fact1, fact2)
     }
 }

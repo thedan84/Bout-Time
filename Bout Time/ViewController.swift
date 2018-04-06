@@ -50,7 +50,6 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
     }
     
     var points = 0
-    var sound = Sound()
     var timer = Timer()
     var seconds = 60
     
@@ -166,7 +165,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
     // Starts the timer
     func startTimer() {
         self.seconds = 60
-        self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(ViewController.timerFire(_:)), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(ViewController.timerFire), userInfo: nil, repeats: true)
     }
     
     // Stops the timer
@@ -175,7 +174,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
     }
     
     // Helper method for the round timer
-    func timerFire(_ timer: Timer) {
+    @objc func timerFire(_ timer: Timer) {
         self.seconds -= 1
         timerLabel.text = "\(seconds)"
         if seconds == 0 {
@@ -189,12 +188,12 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
         
         switch result {
         case true:
-            sound.playRightAnswerSound()
+            Sound.playRightAnswerSound()
             nextRoundButton.setImage(NextRoundImage.Success.imageName(), for: UIControlState())
             nextRoundButton.isHidden = false
             points += 1
         case false:
-            sound.playWrongAnswerSound()
+            Sound.playWrongAnswerSound()
             nextRoundButton.setImage(NextRoundImage.Failure.imageName(), for: UIControlState())
             nextRoundButton.isHidden = false
         }
@@ -212,10 +211,10 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
     }
     
     // Opens the Safari View Controller after the user tapped on a fact
-    func factTapped(_ sender: UITapGestureRecognizer) {
+    @objc func factTapped(_ sender: UITapGestureRecognizer) {
         let fact = factManager.facts[sender.view!.tag - 1]
         if let urlString = fact.url, let url = URL(string: urlString) {
-            let safariVC = SFSafariViewController(url: url, entersReaderIfAvailable: true)
+            let safariVC = SFSafariViewController(url: url)
             safariVC.delegate = self
             present(safariVC, animated: true, completion: nil)
         }
