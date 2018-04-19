@@ -10,15 +10,23 @@ import Foundation
 
 // Protocol to which the type has to conform to get Facts out of the Facts.plist
 protocol PlistConverterType {
-    func convertPlistToArray(_ plist: String) -> [[String: AnyObject]]?
+    func convertPlistToArray(_ plist: String) -> [Fact]?
 }
 
 // Extension which converts the plist to the desired Facts array
 extension PlistConverterType {
-    func convertPlistToArray(_ plist: String) -> [[String: AnyObject]]? {
+    func convertPlistToArray(_ plist: String) -> [Fact]? {
         
-        guard let path = Bundle.main.path(forResource: plist, ofType: "plist"), let array = NSArray(contentsOfFile: path) as? [[String: AnyObject]] else { return nil }
-                
-        return array
+        guard let url = Bundle.main.url(forResource: plist, withExtension: "plist"), let data = try? Data(contentsOf: url) else { return nil }
+        
+        let decoder = PropertyListDecoder()
+        do {
+            let facts = try decoder.decode([Fact].self, from: data)
+            return facts
+        } catch {
+            print(error)
+        }
+        
+        return nil
     }
 }

@@ -156,9 +156,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
         
         for index in 0..<factManager.facts.count {
             let label = labels[index]
-            if let text = factManager.facts[index].fact {
-                label?.text = text
-            }
+            label?.text = factManager.facts[index].fact
         }
     }
     
@@ -213,7 +211,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
     // Opens the Safari View Controller after the user tapped on a fact
     @objc func factTapped(_ sender: UITapGestureRecognizer) {
         let fact = factManager.facts[sender.view!.tag - 1]
-        if let urlString = fact.url, let url = URL(string: urlString) {
+        if let url = URL(string: fact.url) {
             let safariVC = SFSafariViewController(url: url)
             safariVC.delegate = self
             present(safariVC, animated: true, completion: nil)

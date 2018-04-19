@@ -15,15 +15,14 @@ struct FactManager: PlistConverterType {
     var facts = [Fact]()
     
     // Function to create one random Fact instance, marked private because only this struct needs the func
-    fileprivate func getRandomFact() -> Fact {
-        var factDict = [String: AnyObject]()
+    fileprivate func getRandomFact() -> Fact? {
         
         if let allFacts = convertPlistToArray("Facts") {
             let randomInt = GKRandomSource.sharedRandom().nextInt(upperBound: allFacts.count)
-            factDict = allFacts[randomInt]
+            return allFacts[randomInt]
         }
         
-        return Fact(dictionary: factDict)
+        return nil
     }
     
     // Function to create the 4 random facts.
@@ -31,7 +30,7 @@ struct FactManager: PlistConverterType {
         
         // Checks if no random fact is added twice to the facts array
         while facts.count != 4 {
-            let randomFact = self.getRandomFact()
+            guard let randomFact = self.getRandomFact() else { return }
             
             while !facts.contains(randomFact) {
                 facts.append(randomFact)
@@ -40,14 +39,14 @@ struct FactManager: PlistConverterType {
     }
 
     func getURLForFact(_ fact: Fact) -> String {
-        return fact.url!
+        return fact.url
     }
     
     // Function to compare the right order of facts to the order the user put in.
     func checkRightOrderOfFacts(_ facts: [Fact]) -> Bool {
         var result = false
         
-        let sortedFacts = self.facts.sorted { $0.year! < $1.year! }
+        let sortedFacts = self.facts.sorted { $0.year < $1.year }
         
         if facts == sortedFacts {
             result = true
