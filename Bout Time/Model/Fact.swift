@@ -10,7 +10,7 @@ import Foundation
 
 // Struct to model the logic of a 'historical' fact
 struct Fact: Codable, Equatable {
-    var fact: String
+    var name: String
     var year: Int
     var url: String
 }

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <array>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>Sun Microsystems is founded</string>
 		<key>year</key>
 		<real>1982</real>
@@ -11,7 +11,7 @@
 		<string>http://www.computerhistory.org/timeline/1982/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>Hewlett-Packard is founded</string>
 		<key>year</key>
 		<integer>1939</integer>
@@ -19,7 +19,7 @@
 		<string>http://www.computerhistory.org/timeline/1939/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>The Complex Number Calculator (CNC) is completed</string>
 		<key>year</key>
 		<integer>1940</integer>
@@ -27,7 +27,7 @@
 		<string>http://www.computerhistory.org/timeline/1940/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>First Computer Program to run on a computer</string>
 		<key>year</key>
 		<real>1948</real>
@@ -35,7 +35,7 @@
 		<string>http://www.computerhistory.org/timeline/1948/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>Direct keyboard input to computers</string>
 		<key>year</key>
 		<integer>1956</integer>
@@ -43,7 +43,7 @@
 		<string>http://www.computerhistory.org/timeline/1956/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>Intel introduces the first microprocessor</string>
 		<key>year</key>
 		<real>1971</real>
@@ -51,7 +51,7 @@
 		<string>http://www.computerhistory.org/timeline/1971/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>Laser printer invented at Xerox PARC</string>
 		<key>year</key>
 		<real>1971</real>
@@ -59,7 +59,7 @@
 		<string>http://www.computerhistory.org/timeline/1971/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>Cray-1 supercomputer introduced</string>
 		<key>year</key>
 		<real>1975</real>
@@ -67,7 +67,7 @@
 		<string>http://www.computerhistory.org/timeline/1975/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>Steve Wozniak completes the Apple I</string>
 		<key>year</key>
 		<real>1976</real>
@@ -75,7 +75,7 @@
 		<string>http://www.computerhistory.org/timeline/1976/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>Apple II introduced</string>
 		<key>year</key>
 		<real>1977</real>
@@ -83,7 +83,7 @@
 		<string>http://www.computerhistory.org/timeline/1977/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>&quot;The Computer Programme&quot; debuts on the BBC</string>
 		<key>year</key>
 		<real>1982</real>
@@ -91,7 +91,7 @@
 		<string>http://www.computerhistory.org/timeline/1982/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>Commodore introduces the Commodore 64</string>
 		<key>year</key>
 		<real>1982</real>
@@ -99,7 +99,7 @@
 		<string>http://www.computerhistory.org/timeline/1982/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>IBM introduces its Personal Computer (PC)</string>
 		<key>year</key>
 		<real>1981</real>
@@ -107,7 +107,7 @@
 		<string>http://www.computerhistory.org/timeline/1981/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>Apple introduces the Lisa Computer</string>
 		<key>year</key>
 		<real>1983</real>
@@ -115,7 +115,7 @@
 		<string>http://www.computerhistory.org/timeline/1983/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>Apple launches the Macintosh</string>
 		<key>year</key>
 		<real>1984</real>
@@ -123,7 +123,7 @@
 		<string>http://www.computerhistory.org/timeline/1984/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>PC&apos;s Limited is founded</string>
 		<key>year</key>
 		<integer>1984</integer>
@@ -131,7 +131,7 @@
 		<string>http://www.computerhistory.org/timeline/1984/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>Steve Jobs unveils the NeXT Cube</string>
 		<key>year</key>
 		<integer>1988</integer>
@@ -139,7 +139,7 @@
 		<string>http://www.computerhistory.org/timeline/1988/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>Macintosh Portable is introduced</string>
 		<key>year</key>
 		<integer>1989</integer>
@@ -147,7 +147,7 @@
 		<string>http://www.computerhistory.org/timeline/1989/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>PowerBook series of laptops is introduced</string>
 		<key>year</key>
 		<integer>1991</integer>
@@ -155,7 +155,7 @@
 		<string>http://www.computerhistory.org/timeline/1991/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>Apple ships the first Newton</string>
 		<key>year</key>
 		<integer>1993</integer>
@@ -163,7 +163,7 @@
 		<string>http://www.computerhistory.org/timeline/1993/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>Intel&apos;s Pentium microprocessor is released</string>
 		<key>year</key>
 		<integer>1993</integer>
@@ -171,7 +171,7 @@
 		<string>http://www.computerhistory.org/timeline/1993/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>Sony Vaio series is begun</string>
 		<key>year</key>
 		<integer>1996</integer>
@@ -179,7 +179,7 @@
 		<string>http://www.computerhistory.org/timeline/1996/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>The iMac is launched</string>
 		<key>year</key>
 		<integer>1998</integer>
@@ -187,7 +187,7 @@
 		<string>http://www.computerhistory.org/timeline/1998/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>First camera phone introduced</string>
 		<key>year</key>
 		<integer>2000</integer>
@@ -195,7 +195,7 @@
 		<string>http://www.computerhistory.org/timeline/2000/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>PowerMac G5 is released</string>
 		<key>year</key>
 		<real>2003</real>
@@ -203,7 +203,7 @@
 		<string>http://www.computerhistory.org/timeline/2003/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>Arduino releases its first micro PC</string>
 		<key>year</key>
 		<integer>2005</integer>
@@ -211,7 +211,7 @@
 		<string>http://www.computerhistory.org/timeline/2005/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>Amazon Kindle is released</string>
 		<key>year</key>
 		<real>2007</real>
@@ -219,7 +219,7 @@
 		<string>http://www.computerhistory.org/timeline/2007/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>Apple releases its first iPhone</string>
 		<key>year</key>
 		<integer>2007</integer>
@@ -227,7 +227,7 @@
 		<string>http://www.computerhistory.org/timeline/2007/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>MacBook Air is released</string>
 		<key>year</key>
 		<integer>2008</integer>
@@ -235,7 +235,7 @@
 		<string>http://www.computerhistory.org/timeline/2008/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>Apple iPad is released</string>
 		<key>year</key>
 		<integer>2010</integer>
@@ -243,7 +243,7 @@
 		<string>http://www.computerhistory.org/timeline/2010/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>Nest Learning Thermostat is introduced</string>
 		<key>year</key>
 		<integer>2011</integer>
@@ -251,7 +251,7 @@
 		<string>http://www.computerhistory.org/timeline/2011/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>Raspberry Pi is released</string>
 		<key>year</key>
 		<integer>2012</integer>
@@ -259,7 +259,7 @@
 		<string>http://www.computerhistory.org/timeline/2012/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>Apple Watch is released</string>
 		<key>year</key>
 		<integer>2015</integer>
@@ -267,7 +267,7 @@
 		<string>http://www.computerhistory.org/timeline/2015/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>microsoft.com goes online</string>
 		<key>year</key>
 		<real>1991</real>
@@ -275,7 +275,7 @@
 		<string>http://www.computerhistory.org/timeline/1991/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>3.5-inch floppy drive introduced</string>
 		<key>year</key>
 		<integer>1981</integer>
@@ -283,7 +283,7 @@
 		<string>http://www.computerhistory.org/timeline/1981/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>Konrad Zuse finishes the Z3 computer</string>
 		<key>year</key>
 		<integer>1941</integer>
@@ -291,7 +291,7 @@
 		<string>http://www.computerhistory.org/timeline/1941/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>Harvard Mark 1 is completed</string>
 		<key>year</key>
 		<integer>1944</integer>
@@ -299,7 +299,7 @@
 		<string>http://www.computerhistory.org/timeline/1944/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>Hewlett-Packard introduces the HP-35 calculator</string>
 		<key>year</key>
 		<integer>1971</integer>
@@ -307,7 +307,7 @@
 		<string>http://www.computerhistory.org/timeline/1971/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>MITS Altair 8800 kit appears in &quot;Popular Electronics&quot;</string>
 		<key>year</key>
 		<integer>1975</integer>
@@ -315,7 +315,7 @@
 		<string>http://www.computerhistory.org/timeline/1975/</string>
 	</dict>
 	<dict>
-		<key>fact</key>
+		<key>name</key>
 		<string>Atari introduces its Model 400 and 800 computers</string>
 		<key>year</key>
 		<integer>1979</integer>

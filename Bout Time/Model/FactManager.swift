@@ -9,13 +9,13 @@
 import Foundation
 import GameKit
 
-// Struct for managing 'Fact' instances, conforms to 'PlistConverterType
-struct FactManager: PlistConverterType {
+// Struct for managing 'Fact' instances, conforms to 'PlistConverter'
+struct FactManager: PlistConverter {
     
-    var facts = [Fact]()
+    static var facts = [Fact]()
     
     // Function to create one random Fact instance, marked private because only this struct needs the func
-    fileprivate func getRandomFact() -> Fact? {
+    private static func getRandomFact() -> Fact? {
         
         if let allFacts = convertPlistToArray("Facts") {
             let randomInt = GKRandomSource.sharedRandom().nextInt(upperBound: allFacts.count)
@@ -26,7 +26,7 @@ struct FactManager: PlistConverterType {
     }
     
     // Function to create the 4 random facts.
-    mutating func getRandomFacts() {
+    static func getRandomFacts() {
         
         // Checks if no random fact is added twice to the facts array
         while facts.count != 4 {
@@ -38,12 +38,13 @@ struct FactManager: PlistConverterType {
         }
     }
 
-    func getURLForFact(_ fact: Fact) -> String {
-        return fact.url
+    static func getURLForFact(_ fact: Fact) -> URL? {
+        guard let url = URL(string: fact.url) else { return nil}
+        return url
     }
     
     // Function to compare the right order of facts to the order the user put in.
-    func checkRightOrderOfFacts(_ facts: [Fact]) -> Bool {
+    static func checkRightOrderOfFacts(_ facts: [Fact]) -> Bool {
         var result = false
         
         let sortedFacts = self.facts.sorted { $0.year < $1.year }
@@ -58,7 +59,7 @@ struct FactManager: PlistConverterType {
     }
 
     // Function to swap to facts
-    mutating func swapTwoFacts(_ fact1: Int, _ fact2: Int) {
+    static func swapTwoFacts(_ fact1: Int, _ fact2: Int) {
         facts.swapAt(fact1, fact2)
     }
 }

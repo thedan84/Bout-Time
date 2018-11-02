@@ -10,9 +10,9 @@ import Foundation
 import AudioToolbox
 
 struct Sound {
-
     //MARK: - System Sounds
     private static let rightAnswerSound: SystemSoundID = {
+        //Force unwrapping here because the sound file is bundled with the app
         let pathToSoundFile = Bundle.main.url(forResource: "CorrectDing", withExtension: "wav")!
         var soundID: SystemSoundID = 0
         AudioServicesCreateSystemSoundID(pathToSoundFile as CFURL, &soundID)
@@ -20,13 +20,14 @@ struct Sound {
     }()
     
     private static let wrongAnswerSound: SystemSoundID = {
+        //Force unwrapping here because the sound file is bundled with the app
         let pathToSoundFile = Bundle.main.url(forResource: "IncorrectBuzz", withExtension: "wav")!
         var soundID: SystemSoundID = 0
         AudioServicesCreateSystemSoundID(pathToSoundFile as CFURL, &soundID)
         return soundID
     }()
     
-    //MARK: - Private Initializer
+    //MARK: - Private Initializer - Don't allow any initialization outside of this type
     private init() {}
     
     //MARK: - Play sound functions

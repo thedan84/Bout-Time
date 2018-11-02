@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ResultViewController: UIViewController {
+final class ResultViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var resultLabel: UILabel!
@@ -27,6 +27,6 @@ class ResultViewController: UIViewController {
     // MARK: - Action methods
     // Function to play another round
     @IBAction func playAgainButtonTapped(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
 }
