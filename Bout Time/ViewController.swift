@@ -54,7 +54,7 @@ final class ViewController: UIViewController {
     
     //MARK: - UIEvent
     // Shake gesture to validate the answer
-    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if case .motionShake = motion {
             validateAnswer()
         }
@@ -119,12 +119,12 @@ final class ViewController: UIViewController {
         switch result {
         case true:
             Sound.playRightAnswerSound()
-            nextRoundButton.setImage(UIImage(named: .success), for: UIControlState())
+            nextRoundButton.setImage(UIImage(named: .success), for: UIControl.State())
             nextRoundButton.isHidden = false
             points += 1
         case false:
             Sound.playWrongAnswerSound()
-            nextRoundButton.setImage(UIImage(named: .failure), for: UIControlState())
+            nextRoundButton.setImage(UIImage(named: .failure), for: UIControl.State())
             nextRoundButton.isHidden = false
         }
         
